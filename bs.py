@@ -47,6 +47,7 @@ def reverse_BS_new(CP, S, K, r, T, v_0, C_target, epsilon):
             break
         x -= (C - C_target) / V
     if fail == 1:
+        print('Keep reversing BS using dichotomy method.')
         a = 0.001
         b = 1.
         x = reverse_BS_dic(CP, S, K, r, T, C_target, epsilon, a, b)

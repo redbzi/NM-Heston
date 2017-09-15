@@ -31,7 +31,7 @@ def CN_scheme(m, N, U_0, delta_t, A, b, r_f):
         U = inv_lhs * (U + 0.5 * delta_t * (F(n - 1, U, A, b, r_f, delta_t) + b * exp(r_f * delta_t * n)))
     end = datetime.now()
     time = (end - start).total_seconds()
-    return [U, time]
+    return U, time
 
 
 def DO_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f):
@@ -50,7 +50,7 @@ def DO_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f
         U = inv_lhs_2 * rhs_2
     end = datetime.now()
     time = (end - start).total_seconds()
-    return [U, time]
+    return U, time
 
 
 def CS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f):
@@ -76,7 +76,7 @@ def CS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f
         U = inv_lhs_2 * rhs_2
     end = datetime.now()
     time = (end - start).total_seconds()
-    return [U, time]
+    return U, time
 
 
 def MCS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f):
@@ -103,7 +103,7 @@ def MCS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_
         U = inv_lhs_2 * rhs_2
     end = datetime.now()
     time = (end - start).total_seconds()
-    return [U, time]
+    return U, time
 
 
 def HV_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f):
@@ -129,4 +129,4 @@ def HV_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, b, b_0, b_1, b_2, r_f
         U = inv_lhs_2 * rhs_2
     end = datetime.now()
     time = (end - start).total_seconds()
-    return [U, time]
+    return U, time

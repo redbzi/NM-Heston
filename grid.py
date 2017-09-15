@@ -34,4 +34,4 @@ def make_grid(m1, S, S_0, K, c, m2, V, V_0, d):
     # plt.plot(X, Y, '.', color='blue')
     # plt.show()
 
-    return [Vec_s, Delta_s, Vec_v, Delta_v, X, Y]
+    return Vec_s, Delta_s, Vec_v, Delta_v, X, Y

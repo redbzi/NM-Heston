@@ -71,7 +71,7 @@ def make_matrices(m1, m2, m, rho, sigma, r_d, r_f, kappa, eta, Vec_s, Vec_v, Del
     #plt.spy(A)
     #plt.show()
 
-    return [A_0, A_1, A_2, A]
+    return A_0, A_1, A_2, A
 
 
 def make_boundaries(m1, m2, m, r_d, r_f, N, Vec_s, delta_t):
@@ -93,4 +93,4 @@ def make_boundaries(m1, m2, m, r_d, r_f, N, Vec_s, delta_t):
 
     b = b_0 + b_1 + b_2
 
-    return [b_0, b_1, b_2, b]
+    return b_0, b_1, b_2, b

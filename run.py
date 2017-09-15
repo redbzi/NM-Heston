@@ -12,8 +12,8 @@ import bs
 K = 100.
 S_0 = K
 S = 8 * K
-V = 5.
 V_0 = 0.04
+V = 5.
 T = 1.
 
 r_d = 0.025                                 # domestic interest rate
@@ -37,9 +37,9 @@ N = 20
 delta_t = T / N
 
 # model setup
-[Vec_s, Delta_s, Vec_v, Delta_v, X, Y] = grid.make_grid(m1, S, S_0, K, c, m2, V, V_0, d)
-[A_0, A_1, A_2, A] = fac.make_matrices(m1, m2, m, rho, sigma, r_d, r_f, kappa, eta, Vec_s, Vec_v, Delta_s, Delta_v)
-[B_0, B_1, B_2, B] = fac.make_boundaries(m1, m2, m, r_d, r_f, N, Vec_s, delta_t)
+Vec_s, Delta_s, Vec_v, Delta_v, X, Y = grid.make_grid(m1, S, S_0, K, c, m2, V, V_0, d)
+A_0, A_1, A_2, A = fac.make_matrices(m1, m2, m, rho, sigma, r_d, r_f, kappa, eta, Vec_s, Vec_v, Delta_s, Delta_v)
+B_0, B_1, B_2, B = fac.make_boundaries(m1, m2, m, r_d, r_f, N, Vec_s, delta_t)
 
 # pricing
 print("--True Price", true_price)
@@ -50,7 +50,7 @@ print("\n--CN Scheme")
 UU_0 = np.array([[max(Vec_s[i] - K, 0) for i in range(m1 + 1)] for j in range(m2 + 1)])
 U_0 = UU_0.flatten()
 
-[price, time] = solver.CN_scheme(m, N, U_0, delta_t, A, B, r_f)
+price, time = solver.CN_scheme(m, N, U_0, delta_t, A, B, r_f)
 price = np.reshape(price, (m2 + 1, m1 + 1))
 index_s = Vec_s.index(S_0)
 index_v = Vec_v.index(V_0)
@@ -66,7 +66,7 @@ print("\n--Do Scheme")
 UU_0 = np.array([[max(Vec_s[i] - K, 0) for i in range(m1 + 1)] for j in range(m2 + 1)])
 U_0 = UU_0.flatten()
 
-[price, time] = solver.DO_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
+price, time = solver.DO_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
 price = np.reshape(price, (m2 + 1, m1 + 1))
 index_s = Vec_s.index(S_0)
 index_v = Vec_v.index(V_0)
@@ -82,7 +82,7 @@ print("\n--CS Scheme")
 UU_0 = np.array([[max(Vec_s[i] - K, 0) for i in range(m1 + 1)] for j in range(m2 + 1)])
 U_0 = UU_0.flatten()
 
-[price, time] = solver.CS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
+price, time = solver.CS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
 price = np.reshape(price, (m2 + 1, m1 + 1))
 index_s = Vec_s.index(S_0)
 index_v = Vec_v.index(V_0)
@@ -98,7 +98,7 @@ print("\n--MCS Scheme")
 UU_0 = np.array([[max(Vec_s[i] - K, 0) for i in range(m1 + 1)] for j in range(m2 + 1)])
 U_0 = UU_0.flatten()
 
-[price, time] = solver.MCS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
+price, time = solver.MCS_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
 price = np.reshape(price, (m2 + 1, m1 + 1))
 index_s = Vec_s.index(S_0)
 index_v = Vec_v.index(V_0)
@@ -114,7 +114,7 @@ print("\n--HV Scheme")
 UU_0 = np.array([[max(Vec_s[i] - K, 0) for i in range(m1 + 1)] for j in range(m2 + 1)])
 U_0 = UU_0.flatten()
 
-[price, time] = solver.HV_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
+price, time = solver.HV_scheme(m, N, U_0, delta_t, theta, A, A_0, A_1, A_2, B, B_0, B_1, B_2, r_f)
 price = np.reshape(price, (m2 + 1, m1 + 1))
 index_s = Vec_s.index(S_0)
 index_v = Vec_v.index(V_0)
