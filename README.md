@@ -1,7 +1,7 @@
 # NM-Heston
 
 ## Description ##
-This project implements the Crank-Nicholson solving scheme and four splitting schemes of the Alternating Direction Implicit (ADI) type:
+This project implements the Crank-Nicolson solving scheme and four splitting schemes of the Alternating Direction Implicit (ADI) type:
 - Douglas
 - Craig–Sneyd
 - Modified Craig–Sneyd
